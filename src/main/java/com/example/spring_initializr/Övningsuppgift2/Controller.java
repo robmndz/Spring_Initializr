@@ -111,4 +111,23 @@ public class Controller {
         return res;
     }
 
+    @RequestMapping("/kompis/{id}/delete")
+    public Response deleteKompisById(@PathVariable("id") int id){
+        Response res = new Response("Kompis deleted", Boolean.FALSE);
+
+        int indexToRemove = -1;
+        for (int i = 0; i < kompisList.size(); i++){
+            if (kompisList.get(i).getId() == id){
+                indexToRemove = i;
+            }
+        }
+
+        if (indexToRemove != -1){
+            kompisList.remove(indexToRemove);
+            res.setStatus(Boolean.TRUE);
+        }
+
+        return res;
+    }
+
 }
