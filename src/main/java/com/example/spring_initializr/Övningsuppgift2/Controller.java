@@ -9,7 +9,11 @@ import java.util.List;
 @RestController
 public class Controller {
 
+
     /*
+    // Gör ingen skillnad när vi bara jobbar med JSON, men när vi också har
+    metoder som returnerar XML kan det vara bra att lägga till för att
+    säkerställa att vi får tillbaka JSON
     @RequestMapping(value= "/kompis", produces = "application/JSON")
     public Kompis oneKompisJSON() {
 
@@ -19,7 +23,8 @@ public class Controller {
         k1.setNamn("Roberto Méndez");
         k1.setTelefonnummer("7634234356");
         return k1;
-    } */
+    }
+     */
 
     KompisDAO kompisDao = new KompisDAO();
     List<Kompis> kompisList = kompisDao.getAllKompis();
