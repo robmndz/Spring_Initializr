@@ -71,6 +71,25 @@ public class Controller {
         return result;
     }
 
+    @RequestMapping("/kompis/{id}/delete")
+    public Response deleteKompisById(@PathVariable("id") int id){
+        Response res = new Response("Kompis deleted", Boolean.FALSE);
+
+        int indexToRemove = -1;
+        for (int i = 0; i < kompisList.size(); i++){
+            if (kompisList.get(i).getId() == id){
+                indexToRemove = i;
+            }
+        }
+
+        if (indexToRemove != -1){
+            kompisList.remove(indexToRemove);
+            res.setStatus(Boolean.TRUE);
+        }
+
+        return res;
+    }
+
     // POST
 //    @PostMapping("/kompis/add")
 //    public Response add(@RequestBody Kompis k) {
@@ -81,13 +100,22 @@ public class Controller {
 //        return res;
 //    }
 
-    // Samma grej
+    // POST
+    /*
+    Kompis object.
+    To do so, we need to use 'Postman' or 'Generate Request in HTTP Client' via Intellij.
+     */
     @PostMapping("/kompis/add")
     public Response add(@RequestBody Kompis k) {
         kompisList.add(k);
         return new Response("Kompis added", Boolean.TRUE);
     }
 
+    /*
+    POST
+    Kompis object.
+    To do so, we need to use 'Postman' or 'Generate Request in HTTP Client' via Intellij.
+     */
     @PostMapping("/kompis/update")
     public Response upsertBook(@RequestBody Kompis k){
         Response res = new Response("Kompis updated", Boolean.FALSE);
@@ -108,25 +136,6 @@ public class Controller {
             kompisList.set(indexToUpdate, k);
             res.setStatus(Boolean.TRUE);
         }
-        return res;
-    }
-
-    @RequestMapping("/kompis/{id}/delete")
-    public Response deleteKompisById(@PathVariable("id") int id){
-        Response res = new Response("Kompis deleted", Boolean.FALSE);
-
-        int indexToRemove = -1;
-        for (int i = 0; i < kompisList.size(); i++){
-            if (kompisList.get(i).getId() == id){
-                indexToRemove = i;
-            }
-        }
-
-        if (indexToRemove != -1){
-            kompisList.remove(indexToRemove);
-            res.setStatus(Boolean.TRUE);
-        }
-
         return res;
     }
 
