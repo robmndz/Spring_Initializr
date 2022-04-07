@@ -9,7 +9,6 @@ import java.util.List;
 @RestController
 public class Controller {
 
-
     /*
     @RequestMapping(value= "/kompis", produces = "application/JSON")
     public Kompis oneKompisJSON() {
@@ -24,6 +23,7 @@ public class Controller {
 
     KompisDAO kompisDao = new KompisDAO();
     List<Kompis> kompisList = kompisDao.getAllKompis();
+
 
     @RequestMapping("/kompis")
     public List<Kompis> index() {
